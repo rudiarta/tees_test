@@ -1,4 +1,4 @@
-from Repository.UserRepository import *
+from repository.user.UserRepository import UserRepository
 
 class UserRepositoryImp(UserRepository):
     def __init__(self):

@@ -1,5 +1,5 @@
-from Repository.UserRepository import *
-from Service.UserService import *
+from repository.user.UserRepository import UserRepository
+from service.user.UserService import UserService
 
 class UserServiceImp(UserService):
     def __init__(self, repo: UserRepository):

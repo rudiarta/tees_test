@@ -1,13 +1,14 @@
 from flask import Flask, request, make_response
-from Controller.UserController import *
-from Repository.UserRepositoryImp import *
+from controller.user.UserController import UserController
+from middleware.user.UserMiddleware import UserMiddleware
 
 app = Flask(__name__)
 
 @app.route('/')
-def hello():
+@UserMiddleware
+def userList():
     controller = UserController(request)
-    return make_response(controller.ListUser(), 200)
+    return controller.ListUser()
 
 if __name__ == "__main__":
     app.run(debug=True, host='127.0.0.1')
