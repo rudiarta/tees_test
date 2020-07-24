@@ -1,6 +1,7 @@
 version: "3.0"
 services: 
     database:
+        
         ports: 
             - "3306:3306"
         volumes:

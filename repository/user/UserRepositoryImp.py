@@ -1,8 +1,10 @@
 from repository.user.UserRepository import UserRepository
+from datamodel.user.UserDataModel import UserData
 
 class UserRepositoryImp(UserRepository):
     def __init__(self):
         pass
     
-    def Insert(self) -> str:
-        return "insert imp from repo"
+    def getUser(self):
+        userDatas = UserData.query.all()        
+        return userDatas

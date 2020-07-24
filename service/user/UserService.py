@@ -1,2 +1,2 @@
 class UserService:
-    def addUser(self): pass
+    def getUser(self): pass
