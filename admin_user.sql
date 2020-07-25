@@ -1,0 +1,1 @@
+INSERT INTO user_profile (id,name,username,password,profile_picture) VALUES (1,'admin','admin','$2b$12$frrGWRIfck8aI6unBEMzFONpbf2aS9NEP1SeBYebPMkKm5NxpxFju','');
