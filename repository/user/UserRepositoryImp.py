@@ -14,3 +14,15 @@ class UserRepositoryImp(UserRepository):
         userData = UserData(name, email, shirtSize)
         db.session.add(userData)
         db.session.commit()
+
+    def updateUser(self, id, name, email, shirtSize):
+        userData = UserData.query.get(id)
+        userData.name = name
+        userData.email = email
+        userData.shirt_size = shirtSize
+        db.session.commit()
+    
+    def deleteUser(self, id):
+        userData = UserData.query.get(id)
+        db.session.delete(userData)
+        db.session.commit()

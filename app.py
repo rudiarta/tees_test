@@ -20,5 +20,17 @@ def addUserData():
     controller = UserController(request)
     return controller.AddUserData()
 
+@app.route('/update-user/<int:id>', methods=['PUT'])
+@UserMiddleware
+def updateUserData(id):
+    controller = UserController(request)
+    return controller.UpdateUserData(id)
+
+@app.route('/delete-user/<int:id>', methods=['DELETE'])
+@UserMiddleware
+def deleteUserData(id):
+    controller = UserController(request)
+    return controller.DeleteUserData(id)
+
 if __name__ == "__main__":
     app.run(debug=True, host='127.0.0.1')

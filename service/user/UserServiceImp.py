@@ -29,5 +29,23 @@ class UserServiceImp(UserService):
         result = json.loads(start+end)
         return result
 
-    def addUser(self, name, email, shirtSize):
-        self.repo.addUser(name, email, shirtSize)
+    def addUser(self, name, email, shirtSize) -> bool:
+        try:
+            self.repo.addUser(name, email, shirtSize)
+            return True
+        except:
+            return False
+
+    def updateUser(self, id, name, email, shirtSize) -> bool:
+        try:
+            self.repo.updateUser(id, name, email, shirtSize)
+            return True
+        except AttributeError as e:
+            return False
+    
+    def deleteUser(self, id) -> bool:
+        try:
+            self.repo.deleteUser(id)
+            return True
+        except:
+            return False

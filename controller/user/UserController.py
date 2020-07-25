@@ -18,15 +18,40 @@ class UserController:
 
     def AddUserData(self):
 
-        name = request.form['name']
-        email = request.form['email']
-        shirtSize = request.form['shirt_size']
+        name = self.req.form['name']
+        email = self.req.form['email']
+        shirtSize = self.req.form['shirt_size']
 
         obj_graph = pinject.new_object_graph(binding_specs=[UserServiceBindingSpec()])
         service: UserService = obj_graph.provide(UserServiceImp)
-        service.addUser(name, email, shirtSize)
         
-        return make_response( {"test":"test"}, 200)
+        if  service.addUser(name, email, shirtSize):
+            return make_response( {"status":"success"}, 200)
+        
+        return make_response( {"status":"failed"}, 422)
+
+    def UpdateUserData(self, id):
+
+        name = self.req.form['name']
+        email = self.req.form['email']
+        shirtSize = self.req.form['shirt_size']
+        
+        obj_graph = pinject.new_object_graph(binding_specs=[UserServiceBindingSpec()])
+        service: UserService = obj_graph.provide(UserServiceImp)
+
+        if service.updateUser(id, name, email, shirtSize):
+            return make_response( {"status":"success"}, 200)
+        
+        return make_response( {"status":"failed"}, 422)
+
+    def DeleteUserData(self, id):
+        obj_graph = pinject.new_object_graph(binding_specs=[UserServiceBindingSpec()])
+        service: UserService = obj_graph.provide(UserServiceImp)
+
+        if service.deleteUser(id):
+            return make_response( {"status":"success"}, 200)
+        
+        return make_response( {"status":"failed"}, 422)
 
 class UserServiceBindingSpec(pinject.BindingSpec):
      def configure(self, bind):
