@@ -1,9 +1,10 @@
 from flask import Flask, request, make_response
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:maulapor@127.0.0.1/maulapor'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("MYSQL_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -50,4 +51,4 @@ def addUserProfile():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='127.0.0.1', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=8080)
