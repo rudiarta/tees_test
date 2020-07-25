@@ -42,5 +42,12 @@ def login():
     controller = UserDataController(request)
     return controller.login()
 
+@app.route('/insert-user-profile', methods=['POST'])
+@UserMiddleware
+def addUserProfile():
+    controller = UserDataController(request)
+    return controller.addUserProfileData()
+
+
 if __name__ == "__main__":
     app.run(debug=True, host='127.0.0.1', port=8080)

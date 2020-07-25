@@ -22,6 +22,19 @@ class UserDataController:
 
         return make_response({"status":"success","token":token}, 200)
 
+    def addUserProfileData(self):
+        name = self.req.form['name']
+        username = self.req.form['username']
+        password = self.req.form['password']
+        profilePicture = self.req.files['profile_picture']
+
+        obj = pinject.new_object_graph(binding_specs=[UserDataServiceBinding()])
+        service: UserDataService = obj.provide(UserDataServiceImp)
+
+        if service.addUser(name, username, password, profilePicture):
+            return make_response({"status":"success"}, 200)
+        return make_response({"status":"failed"}, 422)
+
 class UserDataServiceBinding(pinject.BindingSpec):
     def configure(self, bind):
         bind('repo', to_class=UserDataRepositoryImp)
