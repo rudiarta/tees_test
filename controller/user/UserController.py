@@ -17,8 +17,14 @@ class UserController:
         return make_response( service.getUser(), 200)
 
     def AddUserData(self):
+
+        name = request.form['name']
+        email = request.form['email']
+        shirtSize = request.form['shirt_size']
+
         obj_graph = pinject.new_object_graph(binding_specs=[UserServiceBindingSpec()])
         service: UserService = obj_graph.provide(UserServiceImp)
+        service.addUser(name, email, shirtSize)
         
         return make_response( {"test":"test"}, 200)
 

@@ -7,10 +7,11 @@ class UserServiceImp(UserService):
         self.repo = repo
 
     def getUser(self): 
-        start =  '{"data":['
+        start =  '{"status":"success","data":['
         i = 1
         for data in self.repo.getUser():
             tmp = {
+                "id": data.id,
                 "name": data.name,
                 "email": data.email,
                 "shirt_size": data.shirt_size
@@ -25,6 +26,8 @@ class UserServiceImp(UserService):
         end = ']}'
 
         # parse start:
-        end = json.loads(start+end)
+        result = json.loads(start+end)
+        return result
 
-        return end
+    def addUser(self, name, email, shirtSize):
+        self.repo.addUser(name, email, shirtSize)
