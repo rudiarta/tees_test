@@ -15,9 +15,12 @@ class UserDataController:
         obj = pinject.new_object_graph(binding_specs=[UserDataServiceBinding()])
         service: UserDataService = obj.provide(UserDataServiceImp)
 
-        service.validateUser(username, password)
+        try:
+            token = service.validateUser(username, password)
+        except:
+            return make_response({"status":"failed"}, 401)
 
-        return make_response({"status":"success"}, 200)
+        return make_response({"status":"success","token":token}, 200)
 
 class UserDataServiceBinding(pinject.BindingSpec):
     def configure(self, bind):

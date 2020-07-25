@@ -12,3 +12,4 @@ install-dependency:
 	pip3 install flask_sqlalchemy;
 	pip3 install pinject;
 	pip3 install bcrypt;
+	pip3 install pyjwt;

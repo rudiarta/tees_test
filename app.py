@@ -1,8 +1,6 @@
 from flask import Flask, request, make_response
 from flask_sqlalchemy import SQLAlchemy
-from controller.user.UserController import *
-from controller.userdata.controller import *
-from middleware.user.UserMiddleware import *
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:maulapor@127.0.0.1/maulapor'
@@ -10,6 +8,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+from controller.user.UserController import *
+from controller.userdata.controller import *
+from middleware.user.UserMiddleware import *
 
 # route for user data
 @app.route('/list-user-data', methods=['GET'])
