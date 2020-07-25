@@ -7,15 +7,25 @@ then you can type command below:
 ```
 
 then after that you can use mysql client to input first admin user query in `admin_user.sql`
+
 username = admin
+
 password = admin
-to use on login
+
+(to use on login)
+
+#
 
 the connection for the mysql:
+
 host = 127.0.0.1
+
 port = 3306
+
 user = root
+
 password = maulapor
+
 database = maulapor
 
 ## How to use without docker
@@ -43,7 +53,10 @@ for the migrate
 ```
 
 then after that you can use mysql client to input first admin user query in `admin_user.sql`
+
 username = admin
+
 password = admin
-to use on login
+
+(to use on login)
 
