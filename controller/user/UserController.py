@@ -14,7 +14,7 @@ class UserController:
         obj_graph = pinject.new_object_graph(binding_specs=[UserServiceBindingSpec()])
         service: UserService = obj_graph.provide(UserServiceImp)
         
-        return make_response( service.getUser(), 200)
+        return make_response(service.getUser(), 200)
 
     def AddUserData(self):
 
@@ -26,9 +26,9 @@ class UserController:
         service: UserService = obj_graph.provide(UserServiceImp)
         
         if  service.addUser(name, email, shirtSize):
-            return make_response( {"status":"success"}, 200)
+            return make_response({"status":"success"}, 200)
         
-        return make_response( {"status":"failed"}, 422)
+        return make_response({"status":"failed"}, 422)
 
     def UpdateUserData(self, id):
 
@@ -40,19 +40,19 @@ class UserController:
         service: UserService = obj_graph.provide(UserServiceImp)
 
         if service.updateUser(id, name, email, shirtSize):
-            return make_response( {"status":"success"}, 200)
+            return make_response({"status":"success"}, 200)
         
-        return make_response( {"status":"failed"}, 422)
+        return make_response({"status":"failed"}, 422)
 
     def DeleteUserData(self, id):
         obj_graph = pinject.new_object_graph(binding_specs=[UserServiceBindingSpec()])
         service: UserService = obj_graph.provide(UserServiceImp)
 
         if service.deleteUser(id):
-            return make_response( {"status":"success"}, 200)
+            return make_response({"status":"success"}, 200)
         
-        return make_response( {"status":"failed"}, 422)
+        return make_response({"status":"failed"}, 422)
 
 class UserServiceBindingSpec(pinject.BindingSpec):
      def configure(self, bind):
-         bind('repo', to_class=UserRepositoryImp)
+        bind('repo', to_class=UserRepositoryImp)

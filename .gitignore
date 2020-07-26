@@ -3,3 +3,4 @@ mysql/*
 migrations
 gambar/*
 db/*
+.coverage

@@ -19,3 +19,9 @@ install-dependency:
 	pip3 install flask_migrate;
 	pip3 install pymysql;
 	pip3 install python-dotenv;
+	pip3 install coverage;
+
+run-test:
+	python3 -m unittest test.py;
+	# python3 -m coverage run test.py;
+	# python3 -m coverage report;

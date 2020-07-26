@@ -63,3 +63,8 @@ password = admin
 #
 
 this is the API endpoint postman collection link: https://www.getpostman.com/collections/e748a5d853ef56752ff0
+
+# Running unit test
+```sh
+    $   python3 -m unittest test.py
+```
